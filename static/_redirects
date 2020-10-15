@@ -1,0 +1,5 @@
+# Optional: Redirect default Netlify subdomain to primary domain
+https://friendsofstars.netlify.app/* https://friendsofstarsexperiencealberta.com/:splat 301!
+
+
+/*                                   /
