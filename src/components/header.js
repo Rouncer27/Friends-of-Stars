@@ -1,33 +1,25 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import Logo from "./Logo"
+import styled from 'styled-components'
+
+const StyledLogoWrap = styled.div`
+  width: 100%;
+  max-width: 100rem;
+  margin: 3rem auto;
+  padding: 2rem;
+`
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
+  <header>
+    <StyledLogoWrap>
+      <h1>
+        <Link to="/">
+          <Logo />
         </Link>
       </h1>
-    </div>
+    </StyledLogoWrap>
   </header>
 )
 

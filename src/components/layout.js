@@ -1,16 +1,27 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { ThemeProvider } from "styled-components"
+import styled from 'styled-components'
 
+import theme from "../styles/theme/Theme"
+import GlobalStyle from "../styles/global/Golbal"
 import Header from "./header"
-import "./layout.css"
+import {B1DarkGrey, fontSizer } from '../styles/helpers'
+
+const FooterStyled = styled.footer`
+  width: 100%;
+  max-width: 100rem;
+  margin: 1rem auto;
+  text-align: center;
+
+  p {
+    ${B1DarkGrey};
+    ${fontSizer(1.4, 1.6, 76.8, 150, 1.2)};
+    margin: 0;
+  }
+`
+
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -25,23 +36,15 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
         <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
+        <FooterStyled>
+          <p>© {new Date().getFullYear()} Friends of Stars Experience Alberta</p>
+          <p>Designed, and developed by Switchback Creative.</p>
+        </FooterStyled>
+      </ThemeProvider>
     </>
   )
 }
